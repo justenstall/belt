@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+schema=$1  # name of the schema
+openapi=$2 # path to openapi file
+
+jq --arg schema "$schema" \
+	'.components.schemas.[$schema]' \
+	"$openapi" >"${schema}.schema.json"
